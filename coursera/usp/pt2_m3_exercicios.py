@@ -35,12 +35,12 @@ class Triangulo:
 
     @staticmethod
     def validar_triangulo(a, b, c):
-        lados = enumerate([a, b, c])
-
-        for index, lado in lados:
-            soma_outros_lados = sum([l for i, l in lados if i != index])
-            
-            if lado > soma_outros_lados:
-                return False
+        lados = [a,b,c]
         
+        if any([l<=0 for l in lados]):
+            return False
+        
+        if any([l > (sum(lados)-l) for l in lados]):
+            return False
+
         return True
