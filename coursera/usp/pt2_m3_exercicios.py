@@ -4,6 +4,9 @@ Defina a classe Triangulo cujo construtor recebe 3 valores inteiros corresponden
 A classe triângulo também deve possuir um método perímetro, que não recebe parâmetros e devolve um valor inteiro correspondente ao perímetro do triângulo.
 """
 
+class TrianguloInvalido(Exception):
+    pass
+
 class Triangulo:
     def __init__(self, a, b, c):
         
@@ -60,5 +63,5 @@ class Triangulo:
         lados = [a,b,c]
         
         if any([l > (sum(lados)-l) for l in lados]):
-            raise ValueError(f'Triangulo inválido para os lados: {a} {b} {c}')
+            raise TrianguloInvalido(f'Triângulo inválido para {a} {b} {c}')
          

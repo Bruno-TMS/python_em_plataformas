@@ -10,7 +10,8 @@ from  coursera.usp.pt2_m3_exercicios import Triangulo
                                                   (-5, -4, 3, False),
                                                   (5, 4, 0, False),
                                                   (5, 4, 200, False)])
-def test_validar_triangulo():
-    assert True
+
+def test_validar_triangulo(a, b, c, is_trigangulo):
+    Triangulo._validar_triangulo(a,b,c) ==  is_trigangulo
       
 
