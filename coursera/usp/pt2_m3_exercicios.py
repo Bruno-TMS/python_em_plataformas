@@ -62,6 +62,5 @@ class Triangulo:
     def validar_triangulo(a, b, c):
         lados = [a,b,c]
         
-        if any([l > (sum(lados)-l) for l in lados]):
+        if any([l > (sum(lados)-l) for l in lados]) or any((l<=0) for l in lados):
             raise TrianguloInvalido(f'Triângulo inválido para {a} {b} {c}')
-         
