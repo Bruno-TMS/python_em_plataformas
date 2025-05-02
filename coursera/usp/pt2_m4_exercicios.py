@@ -4,8 +4,10 @@ def  ordenada(lista):
 
 
 
-def busca(lista:list, elemento):
+def busca(lista, elemento):
     if not elemento in lista:
         return False
     
-    return [i for i,e in enumerate(list) if e == elemento][0]
+    for i, e in enumerate(lista):
+        if e == elemento:
+            return i
