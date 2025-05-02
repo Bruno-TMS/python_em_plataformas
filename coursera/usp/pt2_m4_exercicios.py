@@ -8,5 +8,4 @@ def busca(lista:list, elemento):
     if not elemento in lista:
         return False
     
-    return lista.index(elemento)
-
+    return [i for i,e in enumerate(list) if e == elemento][0]
