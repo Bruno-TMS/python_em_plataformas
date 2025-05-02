@@ -15,6 +15,10 @@ class Triangulo:
         self._a = a
         self._b = b
         self._c = c
+    
+    @property
+    def lados(self):
+        return [self._a, self._b, self._c]
         
     @property
     def a(self):
@@ -43,11 +47,21 @@ class Triangulo:
         Triangulo.validar_triangulo(self._a, self._b, valor)
         self._c = valor
     
+    def retangulo(self):
+        lados = sorted(self.lados)
+        hipotenusa = lados.pop()
+        cateto_1 = lados.pop()
+        cateto_2 = lados.pop()
+        return hipotenusa**2 == cateto_1**2 + cateto_2**2
+
+    def semelhantes(self, triangulo):
+        return len({sl/tl for sl, tl in zip(sorted(self.lados), sorted(triangulo.lados))}) == 1
+
     def perimetro(self):
-        return sum([self.a, self.b, self.c])
+        return sum(self.lados)
     
     def tipo_lado(self):
-        lados_unicos = len({l for l in [self.a, self.b, self.c]})
+        lados_unicos = len({l for l in self.lados})
     
         if lados_unicos == 3:
             return 'escaleno'
