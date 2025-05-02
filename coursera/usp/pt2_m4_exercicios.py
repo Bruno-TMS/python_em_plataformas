@@ -23,8 +23,10 @@ def lista_grande(n):
 def ordena(lista:list):
     ord_lst = []
     while lista:
-        min_index = lista.index(min(lista))
-        ord_lst = lista.pop(min_index)
+        min_element = min(lista)
+        ord_lst.append(min_element)
+        min_index = lista.index(min_element)
+        lista.pop(min_index)
     return ord_lst
         
 
