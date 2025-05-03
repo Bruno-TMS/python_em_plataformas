@@ -23,33 +23,50 @@ busca([1, 2, 3, 4, 5, 6], 4)
 """
 
 def busca(lista, elemento):
+    if (not lista):
+        return False
     
-    if len(lista) == 1:
-        print('0')
-        
-        if elemento in lista:
-            return 0
-        
+    lista = [i_e for i_e in enumerate(lista)]
+  
+    def get_index_meio(lista):
+        if len(lista) % 2 == 0:
+            return (len(lista)//2)-1
         else:
-            return False 
+            return len(lista)//2
+    
+    def get_lista_a_direita(lista):
+        return lista[get_index_meio(lista)+1:]
+    
+    def get_lista_a_esquerda(lista):
+        return lista[:get_index_meio(lista)]
+    
+    def get_idx_orig_ele_orig(lista):
+        idx_m = get_index_meio(lista)
+        idx_original = lista[idx_m][0]
+        elemento = lista[idx_m][1]
+        return (idx_original, elemento)
+    
+    
+    while True:
+        idx_orig, ele_orig = get_idx_orig_ele_orig(lista)
+        print(idx_orig)
+        
+        if ele_orig == elemento:
+            return idx_orig
 
-    while len(lista) > 1:
-        index_central = len(lista // 2)
-        elemento_central = lista[index_central]
+        if len(lista) <= 1:
+            break
         
-        print(f'{index_central}')
+        if elemento > ele_orig:
+            lista =  get_lista_a_direita(lista)
+
+        if elemento < ele_orig:
+            lista =  get_lista_a_esquerda(lista)
         
-        if elemento_central == elemento:
-            return index_central
-        
-        if elemento > elemento_central:
-            lista =  lista[index_central:]
-        
-        if elemento < elemento_central:
-            lista = lista[:index_central]
         
     return False
 
+    
 """
 Exercício 2: Ordenação com bubble sort
 Implemente a função bubble_sort(lista), que recebe uma lista com números inteiros como parâmetro e devolve esta lista ordenada. Utilize o algoritmo bubble sort.
