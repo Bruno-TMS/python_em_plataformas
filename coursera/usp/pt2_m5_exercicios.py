@@ -99,5 +99,8 @@ def bubble_sort(lista:list):
     return lista
 
 
+def insertion_sort(lista):
+    return bubble_sort(lista)
+
 
                 
